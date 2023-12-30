@@ -19,7 +19,7 @@ add_library(aocUtilLib SHARED
 target_include_directories(aocUtilLib PRIVATE include)
 
 
-foreach( exec 2 3 4 )
+foreach( exec 2 3 4 5 6 )
     add_executable ( 2015.${exec} game2015/${exec}.cxx)
     target_include_directories(2015.${exec} PRIVATE ${INCLUDE_DIRS})
     target_link_libraries(2015.${exec} aocUtilLib)
