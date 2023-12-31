@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
   using namespace std::complex_literals;
   std::map<char, Pos> moveMap({ {'>', 1}, {'^', 1i}, {'v', -1i}, {'<', -1} });
 
-  std::ifstream inFile("game2015/3.txt");
+  std::ifstream inFile("input2015/3.txt");
   std::string line;
   std::getline(inFile, line);
 

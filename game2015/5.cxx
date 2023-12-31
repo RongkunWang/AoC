@@ -53,7 +53,7 @@ bool isNice1(std::string line) {
 
 int main(int argc, char** argv) {
 
-  std::ifstream inFile("game2015/5.txt");
+  std::ifstream inFile("input2015/5.txt");
 
   std::string line;
   int sol1(0), sol2(0);

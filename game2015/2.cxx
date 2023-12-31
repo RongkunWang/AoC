@@ -10,7 +10,7 @@
 
 int main(int argc, char** argv) {
 
-  std::ifstream inFile("game2015/2.txt");
+  std::ifstream inFile("input2015/2.txt");
 
   std::string line;
   int paper(0), ribbon(0);

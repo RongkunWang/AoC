@@ -1,7 +1,2 @@
+build
 *swp
-*lib
-*cmake
-CMakeCache.txt
-CMakeFiles
-Makefile
-2015*

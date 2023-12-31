@@ -6,6 +6,9 @@ find_package(OpenSSL REQUIRED)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_FLAGS "-O3")
 
+set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
+# string(replace " " "\ " CMAKE_INSTALL_PREFI ${CMAKE_INSTALL_PREFI_pre})
+
 
 
 set(INCLUDE_DIRS include)
@@ -19,12 +22,23 @@ add_library(aocUtilLib SHARED
 target_include_directories(aocUtilLib PRIVATE include)
 
 
-foreach( exec 2 3 4 5 6 )
-    add_executable ( 2015.${exec} game2015/${exec}.cxx)
-    target_include_directories(2015.${exec} PRIVATE ${INCLUDE_DIRS})
-    target_link_libraries(2015.${exec} aocUtilLib)
-    if (${exec} EQUAL 4)
-        target_link_libraries(2015.${exec} OpenSSL::Crypto)
-    endif()
-endforeach()
 
+foreach( year 2015 )
+    set(gameDir "game${year}")
+    file(GLOB exe "${gameDir}/*.cxx")
+    file(GLOB input "${gameDir}/*.txt")
+
+    foreach( exeFullPath ${exe} )
+        get_filename_component(exec ${exeFullPath} NAME_WLE)
+        message(STATUS "${year} Day${exec}")
+        set(exeName ${year}.${exec})
+        add_executable ( ${exeName} ${gameDir}/${exec}.cxx)
+        target_include_directories(${exeName} PRIVATE ${INCLUDE_DIRS})
+        target_link_libraries(${exeName} aocUtilLib)
+        if (${year} EQUAL ${year} AND ${exec} EQUAL 4)
+            target_link_libraries(${exeName} OpenSSL::Crypto)
+        endif()
+    endforeach()
+    install(DIRECTORY DESTINATION input${year})
+    install(FILES ${input} DESTINATION input${year}/)
+endforeach()

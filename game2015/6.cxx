@@ -10,7 +10,7 @@
 
 int main(int argc, char** argv) {
 
-  std::ifstream inFile("game2015/6.txt");
+  std::ifstream inFile("input2015/6.txt");
 
   std::string line;
   int sol1(0), sol2(0);
